@@ -85,7 +85,11 @@ dat.election <- cbind("election", ldply(dat$regions, matrix), ldply(dat$values, 
 names(c(dat.election, dat.campaign, dat.presidential, dat.vote, dat.pence, dat.kaine, dat.clinton,
         dat.trump)) <- c("keyword", "region", "dates", "value")
 dat.tot <- rbind(dat.election, dat.campaign, dat.presidential, dat.vote, dat.pence, dat.kaine, dat.clinton, dat.trump)
-#Few steps ommitted here but will copy in later
+
+#Few steps ommitted here but will copy in later.
+#The collected data needs to be rescaled which is done from a multiple term over time dataset that uses an overlapping search term.
+#This was done in excel to figure out the quirks, so no code as of yet.
+
 fin.tot <- aggregate(fin$value, by=list(fin$region, fin$days), FUN = sum)
 names(fin.tot) <- c("region", "days", "value")
 View(fin.tot)
